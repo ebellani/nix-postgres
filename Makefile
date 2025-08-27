@@ -7,8 +7,8 @@ TST_DIR := test
 
 .PHONY: clean
 clean: ## remove state of the local database
-	rm -rf .devenv
+	rm -rf .devenv/state/postgres
 
 .PHONY: database
 database: clean ## starts up a local PostgreSQL cleaning the local environment. This will hang and delete your local ephemeral database data.
-	PGPASSWORD= PGUSER= PGDATABASE= nix develop .#services $(NIXFLAGS)
+	nix develop . $(NIXFLAGS)
